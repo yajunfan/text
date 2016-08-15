@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body,html{
+            height: 2000px;
+            position: relative;
+        }
+        div{
+            position: absolute;
+            width: 100px;
+            height: 300px;
+            background: red;
+            left: 100px;
+            top:40px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script src="../utils.js"></script>
+    <script src="move-02.js"></script>
+    <script>
+        var oDiv=document.getElementsByTagName("div")[0];
+        zhufengAnimate(oDiv,{left:1000,top:400,background:"blue",width:0,height:0},1000)
+    </script>
+</body>
+</html>

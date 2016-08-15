@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    var ary =[15,37,48,2,4,2,36,15,1,2,3,3,2,21,3];
+    var temp=null;
+    for(var i=0;i<ary.length-1;i++){
+       for(var j=0;j<ary.length-1-i;j++){
+           if(ary[j]>ary[j+1]){
+               temp=ary[j];
+               ary[j]=ary[j+1];
+               ary[j+1]=temp;
+           }
+       }
+    }
+    var ary1=ary;
+    var obj={};
+   for(var a=0;a<ary1.length;a++){
+       var res=ary1[a];
+       if(obj[res]==res){
+           ary1.splice(a,1);
+           a--;
+       }else{
+           obj[res]=res;
+       }
+   }
+//    obj=null;
+   console.log(ary1) ;
+
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+.box {
+    width: 1000px;
+    height: 300px;
+    background: url("img/default.gif") no-repeat center center #e1e1e1;
+    position: relative;
+    margin: 30px auto;
+}
+
+.box .boxInner div{
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 1000px;
+    height: 100%;
+    opacity: 0;
+    z-index: 0;
+
+}
+.box .boxInner div img{
+    width: 100%;
+    height: 100%;
+}
+.box ul{
+    position: absolute;
+    left: 455px;
+    bottom: 10px;
+    background: lightskyblue;
+    border-radius: 10px;
+    z-index: 10;
+    float: left;
+}
+.box ul li{
+    width: 18px;
+    height: 18px;
+    background: lavender;
+    margin: 2px 5px;
+    border-radius: 50%;
+    float: left;
+}
+.box ul li.bg{
+    background: lawngreen;
+}
+.box a{
+    background: url("img/pre.png") no-repeat;
+    position: absolute;
+    top: 127.5px;
+    opacity: 0.5;
+    filter:alpha(opacity=50);
+    width: 30px;
+    height: 45px;
+    z-index: 10;
+    display: none;
+}
+.box a.btnLeft{
+    background-position:0 0 ;
+    left:30px;
+}
+.box a.btnRight{
+    right: 30px;
+    background-position: -50px 0;
+}
+.box a:hover{
+    opacity: 0.5;
+    filter:alpha(opacity=50);
+}

@@ -1,0 +1,70 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+.box{
+    width: 1000px;
+    height: 300px;
+    background: url("img/default.gif") no-repeat center center #e1e1e1;
+    position: relative;
+    margin: 30px auto;
+    overflow: hidden;
+}
+.box .boxInner{
+    width: 4000px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.box .boxInner div{
+    width: 1000px;
+    height: 100%;
+    float:left;
+}
+.box .boxInner div img{
+    width: 100%;
+    height: 100%;
+    /*float: left;*/
+}
+.box ul{
+    position: absolute;
+    left:455px;
+    bottom:15px;
+    background: lavender;
+    border-radius: 10px;
+}
+.box ul li{
+    width: 18px;
+    height: 18px;
+    background: #e1e1e1;
+    margin: 2px 5px;
+    border-radius: 50%;
+    float: left;
+}
+.box ul li.bg{
+    background: lawngreen;
+}
+.box a{
+    background: url("img/pre.png") no-repeat;
+    position: absolute;
+    top:127.5px;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    width: 30px;
+    height: 45px;
+}
+.box a.btnLeft{
+    background-position: 0 0;
+    left:20px;
+}
+.box a.btnRight{
+    background-position: -50px 0;
+    right:20px;
+}
+.box a:hover{
+    opacity: 1;
+    filter: alpha(opacity=100);
+}

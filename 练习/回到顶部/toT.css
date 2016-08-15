@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+body,html{
+    /*position: relative;*/
+    height: 1000%;
+    background: -webkit-linear-gradient(top left,lightcyan,lavenderblush,lightgreen,lavender, #f275fa);
+}
+div{
+    position: fixed;
+    right:16px;
+    bottom: 16px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 60px;
+    background: darkblue;
+    color: gold;
+    cursor: pointer;
+    display: none;
+}

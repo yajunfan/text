@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+input{
+    list-style: none;
+    text-decoration: none;
+}
+.box{
+    /*position: relative;*/
+    width: 600px;
+}
+.box input{
+    width: 185px;
+    height: 50px;
+    background: lightcyan;
+    border-radius: 20%;
+    text-align: center;
+    line-height: 35px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+.box input.one{
+    background: pink;
+}
+.box div{
+    width: 600px;
+    height: 400px;
+    display: none;
+}
+.box div.show{
+    display: block;
+}
+.box div img{
+    width: 100%;
+    height: 100%;
+}

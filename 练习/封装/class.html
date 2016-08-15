@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">
+    <div class="box1 box2 box3 box4"></div>
+    <div class="box1 box2 box3 "></div>
+    <div class="box1 box2 "></div>
+    <div class="box1 "></div>
+</div>
+<script>
+    var oBox=document.getElementById("box");
+    var aBox=oBox.getElementsByTagName("div");
+   //console.log(getByClass(oBox,"box3")) ;
+    //alert(hasClass(aBox[1],"  box3   "));
+    addClass(aBox[3]," box66 box44");
+    removeClass(aBox[3]," box66 ");
+    function getByClass(curEle,strClass) {
+        if("getComputedStyle" in window){
+            return [].slice.call(curEle.getElementsByClassName(strClass));
+        }
+        var ary=[];
+        var aryClass=strClass.replace(/(^ +)|( +$)/g,"").split(/\s+/g);
+        var curList=curEle.getElementsByTagName("*");
+        for(var i=0;i<curList.length;i++){
+            var curNode=curList[i];
+            var bOk=true;
+            for(var k=0;k<aryClass.length;k++) {
+                var reg=new RegExp("(^| +)"+aryClass[k]+"( +|$)");
+                if(!reg.test(curNode.className)){
+                    bOk=false;
+                    break;
+                }
+            }
+            if(bOk){
+                ary.push(curNode);
+            }
+        }
+      return ary;
+    }
+    function hasClass(curEle,strClass) {
+        strClass=strClass.replace(/(^ +)|( +$)/g,"");//一定要对远字符串进行处理
+       var reg=new RegExp("(^| +)"+strClass+"( +|$)");
+        return reg.test(curEle.className);
+    }
+    function addClass(curEle,strClass) {
+        var aryClass=strClass.replace(/(^ +)|( +$)/g,"").split(/\s+/g);
+        for(var i=0;i<aryClass.length;i++){
+            if(!hasClass(curEle,aryClass[i])){
+                curEle.className+=" "+aryClass[i]
+            }
+        }
+    }
+    function removeClass(curEle,strClass) {
+        var aryClass=strClass.replace(/(^ +)|( +$)/g,"").split(/\s+/g);
+        for(var i=0;i<aryClass.length;i++){
+            if(hasClass(curEle,aryClass[i])){
+                var reg=new RegExp("(^| +)"+aryClass[i]+"( +|$)");
+                curEle.className=curEle.className.replace(reg," ").replace(/\s+/g," ").replace(/(^ +)|( +$)/g," ")
+            }
+        }
+    }
+
+
+</script>
+</body>
+</html>

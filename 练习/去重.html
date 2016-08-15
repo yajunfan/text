@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+  //  var ary=[1,2,3,5,6,2,4,2,1,5,7,5,3,7,8,9,3,21,4,6];
+//    for(var i=0;i<ary.length-1;i++){
+//        for(var j=i+1;j<ary.length;j++){
+//        if(ary[i]==ary[j]) {
+//            ary.splice(j,1)
+//            j--;
+//        }
+//        }
+//    }
+//    console.log(ary)
+   // var ary=[1,2,3,5,6,2,4,2,1,5,7,5,3,7,8,9,3,21,4,6];
+//    var obj={};
+//    for(var i=0;i<ary.length;i++){
+//        var cur=ary[i];
+//        if(obj[cur]==cur){
+//            ary.splice(i,1);
+//            i--;
+//        }else{
+//            obj[cur]=cur;
+//        }
+//    }
+//    obj=null;
+//    console.log(ary)
+
+  var ary=[1,2,3,5,6,4,2,1,5,7,5,3,7,8,9,3,21,2];
+    var obj={};
+    for(var i=0;i<ary.length;i++){
+        var cur=ary[i];
+        if(obj[cur]==cur){
+            ary[i]=ary[ary.length-1];
+            ary.pop();
+            i--;
+        }else{
+            obj[cur]=cur
+        }
+    }
+//    obj=null;
+    console.log(ary)
+</script>
+</body>
+</html>

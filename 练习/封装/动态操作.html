@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../utils.js"></script>
+<script>
+//    appendChild
+//    prependChild;
+//    insertBefore;
+//    insertAfter;
+
+    function appendChild(parent,curEle) {
+        return parent.appendChild(parent,curEle)
+    }
+    function prependChild(newEle,parent) {
+        var first=utils.firstChild(parent);
+        if(first){
+            parent.prependChild(newEle,first)
+        }else{
+            parent.appendChild(newEle);
+        }
+    }
+    function insertBefore(newEle,oldEle) {
+        oldEle.parentNode.insertBefore(newEle,oldEle)
+    }
+    function insetAfter(newEle,oldEle) {
+        var nex=next(oldEle);
+        if(nex){
+            oldEle.parentNode.insertBefore(newEle,oldEle)
+        }else{
+            oldEle.parentNode.appendChild(newEle)
+        }
+    }
+</script>
+</body>
+</html>

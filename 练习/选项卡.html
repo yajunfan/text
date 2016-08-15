@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 18px;
+            font-family: "微软雅黑", arial, "宋体";
+        }
+        ul,li{
+            list-style: none;
+        }
+        #list{
+            width: 900px;
+            height: 500px;
+            margin: 100px auto;
+        }
+        #list ul{
+            font-size: 0;
+        }
+        #list ul li{
+            display: inline-block;
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background: -webkit-linear-gradient(top left,paleturquoise,palegoldenrod,pink);
+        }
+        #list div{
+            display: none;
+            width: 900px;
+            height: 500px;
+            background: paleturquoise;
+        }
+        #list ul li.selectli{
+            background: paleturquoise;
+        }
+        #list div.selectdiv{
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+<div id="list">
+    <ul>
+        <li class="selectli">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <div class="selectdiv">yi</div>
+    <div>er</div>
+    <div>san</div>
+    <div>si</div>
+</div>
+<script type="text/javascript">
+
+    var oList=document.getElementById("list");
+    var oLis=oList.getElementsByTagName("li");
+    var oDiv=oList.getElementsByTagName("div");
+    for(var i=0;i<oLis.length;i++){
+        oLis[i].yang=i;
+        oLis[i].onclick=function(){
+            for(var j=0;j<oLis.length;j++){
+                oLis[j].className="";
+                oDiv[j].className="";
+            }
+            oLis[this.yang].className="selectli";
+            oDiv[this.yang].className="selectdiv";
+        }
+    }
+
+</script>
+</body>
+</html>

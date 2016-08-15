@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function win(attr,value) {
+        if(value==="undefined"){
+            return document.documentElement[attr]||document.body[attr];
+        }
+        document.documentElement[attr]=document.body[attr]=value;
+    }
+
+    function offset(curEle) {
+        var l=curEle.offsetLeft;
+        var t=curEle.offsetTop;
+        var par=curEle.offsetParent;
+        if(navigator.userAgent.indexOf("MSIE 8.0")===-1){//说明不在ie8下,加上边框
+            l+=par.clientLeft;
+            t+=par.clientTop;
+        }
+        l+=par.offsetLeft;
+        t+=par.offsetTop;
+        par=par.offsetParent;
+        return {left:l,top:t};
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <p></p>
+</div>
+<script>
+    var oBox=document.getElementById("box");
+    var aDiv=oBox.getElementsByTagName("div");
+    console.log(next(aDiv[2]).innerHTML)
+    function getChildren(curEle){
+        if("children" in window){
+            return [].slice.call(curEle.children);
+        }
+        var ary=[];
+        var aChild=curEle.childNodes;
+        for(var i=0;i<aChild.length;i++){
+            if(aChild.nodeType===1){
+                ary.push(aChild[i])
+            }
+        }
+        return ary;
+    }
+    function prev(curEle){
+        if("previousElementSibling" in curEle){
+            return curEle.previousElementSibling;
+        }
+        var pre=curEle.previousSibling;
+            while(pre && pre.nodeType!==1){
+                pre=pre.previousSibling;
+            }
+            return pre;
+    }
+    function next(curEle) {
+        if("nextElementSibling" in curEle){
+            return curEle.nextElementSibling;
+        }
+        var nex=curEle.nextSibling;
+        while(nex&&nex.nodeType!==1){
+            nex=nex.nextSibling;
+        }
+        return next;
+    }
+    function prevAll(curEle) {
+        var pre=prev(curEle);
+        var ary=[];
+        while(pre){
+            ary.push(pre);
+            pre=prev(pre);
+        }
+        return ary;
+
+    }
+    function nextAll(curELe) {
+        var nex=next(curELe);
+        var ary=[];
+        while(nex){
+            ary.push(nex);
+            nex=next(nex);
+        }
+        return ary;
+    }
+    function sibling(curEle) {
+        var ary=[];
+        var pre=prev(curEle);
+        var nex=next(curEle);
+        if(pre){
+            ary.push(pre);
+        }
+        if(nex){
+            ary.push(nex)
+        }
+        return ary;
+    }
+    function siblings(curEle) {
+        return prevAll(curEle).concat(nextAll(curEle));
+    }
+    function firstChild(curEle) {
+        return getChildren(curEle)[0];
+    }
+    function lastChild(curEle) {
+        var lChild=getChildren(curEle);
+        return lChild[lChild.length-1];
+    }
+    function index(curEle) {
+        var cur=prevAll(curEle);
+        return cur.length;
+    }
+
+</script>
+</body>
+</html>

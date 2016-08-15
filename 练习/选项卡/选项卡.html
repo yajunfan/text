@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="choose.css">
+</head>
+<body>
+    <div class="box" id="box">
+        <input type="button" value="星空" class="one">
+        <input type="button" value="美女">
+        <input type="button" value="新闻">
+        <div class="show"><img src="../img/1.jpg" alt=""></div>
+        <div><img src="../img/2.jpg" alt=""></div>
+        <div><img src="../img/3.jpg" alt=""></div>
+    </div>
+    <div class="box" id="box1">
+        <input type="button" value="星空" class="one">
+        <input type="button" value="美女">
+        <input type="button" value="新闻">
+        <div class="show"><img src="../img/1.jpg" alt=""></div>
+        <div><img src="../img/2.jpg" alt=""></div>
+        <div><img src="../img/3.jpg" alt=""></div>
+    </div>
+    <script>
+        choose("box");
+        choose("box1");
+        function choose(idName) {
+            var oDiv=document.getElementById(idName);
+            var aInput=oDiv.getElementsByTagName("input");
+            var aDiv=oDiv.getElementsByTagName("div");
+            for(var i=0;i<aInput.length;i++){
+                aInput[i].index=i;
+                aInput[i].onclick=function () {
+                    for(var k=0;k<aDiv.length;k++){
+                        aDiv[k].className="";
+                        aInput[k].className="";
+                    }
+                    aDiv[this.index].className="show";
+                    aInput[this.index].className="one";
+                };
+
+            }
+        }
+
+    </script>
+</body>
+</html>

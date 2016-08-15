@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.box{
+    width: 800px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px rgba(76, 238, 221, 0.4);
+    margin: 30px auto;
+}
+#tab thead tr th{
+    width: 200px;
+    height: 40px;
+    background: lightcyan;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+}
+#tab tbody tr td{
+    width: 200px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+}
