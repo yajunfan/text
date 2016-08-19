@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+    <link charset="UTF-8" type="text/css" rel="stylesheet" href="css/"/>
+</head>
+<body>
+<ul class="box2" id="box">
+         <li>
+             <span>编号:</span>
+             <span>4</span>
+         </li>
+         <li>
+             <span>姓名:</span>
+             <span>xxx</span>
+         </li>
+         <li>
+             <span>性别:</span>
+             <span>男</span>
+         </li>
+         <li>
+             <span>分数:</span>
+             <span>99</span>
+         </li>
+</ul>
+<script charset="UTF-8" type="text/javascript" src="js/"></script>
+<script charset="UTF-8" type="text/javascript">
+    String.prototype.queryURLParameter = function () {
+        var obj = {},
+                reg = /([^?=&#]+)=([^?=&#]+)/g;
+        this.replace(reg, function () {
+            var key = arguments[1],
+                    value = arguments[2];
+            obj[key] = value;
+        });
+        return obj;
+    };
+
+    var module = (function () {
+        var box = document.getElementById("box");
+        function bindHTML(data) {
+            var str = '';
+            str += '<li>';
+            str += '<span>编号:</span>';
+            str += '<span>' + data["id"] + '</span>';
+            str += '</li>';
+            str += '<li>';
+            str += '<span>姓名:</span>';
+            str += '<span>' + data["name"] + '</span>';
+            str += '</li>';
+            str += '<li>';
+            str += '<span>性别:</span>';
+            str += '<span>' + (data["sex"] == 1 ? "女" : "男") + '</span>';
+            str += '</li>';
+            str += '<li>';
+            str += '<span >分数:</span>';
+            str += '<span>' + data["score"] + '</span>';
+            str += '</li>';
+            box.innerHTML = str;
+        }
+
+        function init() {
+            var studentId = window.location.href.queryURLParameter()["id"];
+            if (typeof studentId === "undefined") {
+                box.style.display = "none";
+                return;
+            }
+            ajax7({
+                url: "/getInfo?id=" + studentId,
+                success: function (jsonData) {
+                    if (jsonData && jsonData.code == 0) {
+                        bindHTML(jsonData["data"]);
+                        return;
+                    }
+                    box.style.display = "none";
+                }
+            });
+        }
+
+        return {init: init};
+    })();
+    module.init();
+</script>
+</body>
+</html>

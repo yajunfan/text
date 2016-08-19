@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+input {
+    outline: none;
+}
+
+ul, li {
+    list-style: none;
+}
+
+html, body {
+    width: 100%;
+    color: #000;
+    font-size: 14px;
+    font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica, sans-serif;
+    overflow-x: hidden;
+    -webkit-user-select: none;
+}
+
+/*--index--*/
+.box {
+    margin: 20px auto;
+    padding: 20px;
+    width: 800px;
+    border: 2px solid green;
+    text-align: center;
+}
+
+.box h2 {
+    height: 35px;
+    line-height: 35px;
+    color: #FFF;
+    font-size: 16px;
+    background: green;
+}
+
+.box h2 span, .con li span {
+    float: left;
+    width: 200px;
+    height: 100%;
+    text-align: center;
+}
+
+.con {
+    height: 300px;
+}
+
+.con li {
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+/*使用CSS3的属性实现隔行变色和鼠标滑过变色*/
+.con li:nth-child(even) {
+    background: #EEE;
+}
+
+.con li:hover {
+    background: #E0F2BE;
+}
+
+.page {
+    display: inline-block;
+    margin-top: 10px;
+    height: 22px;
+    line-height: 22px;
+}
+
+.page span, .page ul, .page input, .page li {
+    float: left;
+    margin: 0 3px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    font-size: 12px;
+    border: 1px solid green;
+    cursor: pointer;
+}
+
+.page ul {
+    border: none;
+}
+
+.page span, .page input {
+    width: 45px;
+}
+
+.page li {
+    width: 20px;
+}
+
+.page li.bg {
+    color: #FFF;
+    background: green;
+}
+
+/*--detail--*/
+.box2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -100px 0 0 -100px;
+    width: 200px;
+    height: 200px;
+    border: 2px solid green;
+}
+
+.box2 li {
+    height: 50px;
+    line-height: 50px;
+}
+
+.box2 li:nth-child(even) {
+    background: #EEE;
+}
+
+.box2 li span {
+    float: left;
+    width: 100px;
+    text-align: center;
+}

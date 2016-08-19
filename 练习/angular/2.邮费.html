@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myMod">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div ng-controller="myCtrl">
+    书名:{{product.name}}
+    价格：{{product.price}}
+    邮费：{{product.post}}
+    数量：<input type="text" ng-model="product.count"/>
+    总价格：{{total()}}
+</div>
+<script src="angular.js" charset="utf-8" type="text/javascript"></script>
+<script charset="utf-8" type="text/javascript">
+    var myModule=angular.module("myMod",[]);
+    myModule.controller("myCtrl",function($scope){
+        $scope.product={name:"angularjs",price:30,post:10,count:1}
+        $scope.total=function(){
+            return $scope.product.price*$scope.product.count+$scope.product.post;
+        }
+        $scope.$watch($scope.total,function(newVal){
+            $scope.product.post=newVal>100?0:10
+        })
+    })
+
+
+</script>
+</body>
+</html>

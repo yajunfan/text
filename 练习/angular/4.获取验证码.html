@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myMod">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="bootstrap.css"/>
+</head>
+<body>
+<div ng-controller="myCtrl">
+    <input type="text" ng-click="math()" ng-model="strig"/>
+   <button class="btn btn-primary" ng-disabled="flag" ng-click="getPass()">{{value}}</button>
+</div>
+<script src="angular.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+    var myModule=angular.module("myMod",[]);
+    myModule.controller("myCtrl",function($scope,$interval){
+        $scope.value="获取验证码";
+        $scope.flag=false;
+        $scope.num=5;
+        $scope.getPass= function () {
+           var timer= $interval(function(){
+                $scope.flag=true;
+                $scope.num=$scope.num-1;
+                $scope.value=$scope.num+"秒后获取验证码";
+                if($scope.num<1){
+                    $interval.cancel(timer);
+                    $scope.value="获取验证码";
+                    $scope.flag=false;
+                    $scope.num=5;
+                    var str="qwertyuiopasdfghjklzxcvbnm";
+                    var str1="";
+                    while(str1.length<4){
+                        str1+=(str.charAt(Math.random()*26))
+                    }
+                    $scope.strig=str1;
+                }
+
+            },1000)
+        }
+    })
+
+
+
+</script>
+</body>
+</html>

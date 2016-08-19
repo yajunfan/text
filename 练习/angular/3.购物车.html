@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myMod">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="bootstrap.css"/>
+</head>
+<body>
+<div ng-controller="myCtrl" class="container" ng-init="reverse=true">
+    <table class="table table-bordered">
+        <tr>
+            <th>序号</th>
+            <th>书名</th>
+            <th>单价</th>
+            <th>数量</th>
+            <th ng-click="flag='smallTotal';reverse=!reverse">小计</th>
+            <th>删除</th>
+        </tr>
+        <tr ng-repeat="p in product|orderBy:flag:reverse">
+            <td>{{$index+1}}</td>
+            <td>{{p.name}}</td>
+            <td>{{p.price}}</td>
+            <td><button ng-click="p.count=p.count<1?0:p.count-1">-</button><input type="text" ng-model="p.count"/><button ng-click="p.count=p.count+1">+</button></td>
+            <td>{{p.price*p.count}}</td>
+            <td><button class="btn btn-danger" ng-click="product.splice($index,1)">删除</button></td>
+        </tr>
+        <tr> <td colspan="6">总价格：{{total()}}</td></tr>
+    </table>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">书名</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" ng-model="bookName" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">价格</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" ng-model="bookPrice">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default" ng-click="tijiao()">提交</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="angular.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+    var myModule=angular.module("myMod",[]);
+    myModule.controller("myCtrl",function($scope){
+        $scope.product=[{name:"JS",price:49,count:1},{name:"REACT",price:78,count:1},{name:"JS",price:57,count:1},{name:"ANGULAR",price:49,count:1},{name:"NODE",price:67,count:1}];
+        $scope.tijiao=function(){
+            var obj={name:$scope.bookName,price:$scope.bookPrice,count:1};
+            if(Number($scope.bookName)===0&&Number($scope.bookPrice)==0){
+                return;
+            }
+            $scope.product.push(obj);
+        }
+        $scope.total=function(){
+        var total=null;
+          angular.forEach($scope.product,function(item,index){
+              total+=item.price*item.count
+          })
+            return total;
+        }
+
+    })
+
+</script>
+</body>
+</html>

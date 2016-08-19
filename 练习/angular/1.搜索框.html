@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myMod">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="bootstrap.css"/>
+</head>
+<body>
+<div ng-controller="myCtrl">
+    <input type="text" ng-model="value" ng-model-options="{debounce:1000}"/>
+<table class="table table-bordered">
+    <tr ng-init="a=true">
+        <th ng-click="flag='num'">序号</th>
+        <th ng-click="flag='name'">姓名</th>
+        <th ng-click="flag='age'">年龄</th>
+        <th ng-click="flag='math'">成绩</th>
+    </tr>
+    <tr ng-repeat="a in ary|filter:value|orderBy:flag:(a=!a)">
+        <th>{{$index+1}}</th>
+        <th>{{a.name}}</th>
+        <th>{{a.age}}</th>
+        <th>{{a.math}}</th>
+    </tr>
+
+</table>
+</div>
+<script src="angular.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+    var myModule=angular.module("myMod",[]);
+    myModule.controller("myCtrl",function($scope){
+        $scope.ary=[{name:"zansan",age:35,math:66},{name:"zansi",age:24,math:39},{name:"liusan",age:67,math:233},{name:"王刘",age:56,math:78}]
+    })
+
+
+</script>
+</body>
+</html>
