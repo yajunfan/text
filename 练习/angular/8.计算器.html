@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div ng-controller="myCtrl">
+    <input type="text" ng-model="one"/>
+    <select ng-model="val" >
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <input type="text" ng-model="two"/>
+    <button ng-click="count()">=</button>
+    <input type="text" ng-model="result"/>
+</div>
+<script src="angular.js" charset="utf-8" type="text/javascript"></script>
+<script charset="utf-8" type="text/javascript">
+    var myModule=angular.module("myModule",[]);
+    myModule.controller("myCtrl",['$scope',"zp",function($scope,zp){
+        $scope.count=function(){
+            $scope.result=zp[$scope.val]($scope.one,$scope.two)
+        }
+    }]);
+    //provider
+
+//    myModule.provider("zp",function(){
+//        var currency=null;
+//        this.setcurrency=function(a){
+//            currency=a;
+//        }
+//        this.$get=function(){
+//            return {
+//                '+':(a,b)=>currency+(parseFloat(a)+parseFloat(b)),
+//                '-':(a,b)=>parseFloat(a)-parseFloat(b),
+//                '*':(a,b)=>parseFloat(a)*parseFloat(b),
+//                '/':(a,b)=>parseFloat(a)/parseFloat(b)
+//            }
+//        }})
+
+//        myModule.config(function(zpProvider){
+//            zpProvider.setcurrency('￥')
+//        })
+
+  //factory
+
+//    myModule.factory('zp',function(){
+//        return {
+//            "+":(a,b)=>parseFloat(a)+parseFloat(b),
+//            "-":(a,b)=>parseFloat(a)-parseFloat(b),
+//            "*":(a,b)=>parseFloat(a)*parseFloat(b),
+//            "/":(a,b)=>parseFloat(a)/parseFloat(b)
+//    }})
+
+    //Service
+
+//    myModule.service('zp',function(){
+//        this['+']=(a,b)=>parseFloat(a)+parseFloat(b),
+//        this['-']=(a,b)=>parseFloat(a)-parseFloat(b),
+//        this['*']=(a,b)=>parseFloat(a)*parseFloat(b),
+//        this['/']=(a,b)=>parseFloat(a)/parseFloat(b)
+//    })
+
+    //value
+
+//    myModule.value('zp',{
+//        "+":(a,b)=>parseFloat(a)+parseFloat(b),
+//        "-":(a,b)=>parseFloat(a)-parseFloat(b),
+//        "*":(a,b)=>parseFloat(a)*parseFloat(b),
+//        "/":(a,b)=>parseFloat(a)/parseFloat(b)
+//    })
+
+    //content
+
+        myModule.constant('zp',{
+            "+":(a,b)=>currency+parseFloat(a)+parseFloat(b),
+            "-":(a,b)=>parseFloat(a)-parseFloat(b),
+            "*":(a,b)=>parseFloat(a)*parseFloat(b),
+            "/":(a,b)=>parseFloat(a)/parseFloat(b)
+        })
+    myModule.config(function(zp){
+        this.currency='￥'
+    })
+
+
+
+</script>
+</body>
+</html>

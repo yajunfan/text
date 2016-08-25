@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div ng-controller="myCtrl">
+
+    mycontrol:<input type="text" ng-model="name"/><input type="text" ng-model="age"/>
+    mydirective:<zfpx-dir age='{{age}}'name="name" fn="fn(d)"> </zfpx-dir>
+</div>
+
+<script src="angular.js" charset="utf-8" type="text/javascript"></script>
+<script charset="utf-8" type="text/javascript">
+    var myApp=angular.module("myApp",[]);
+    myApp.controller("myCtrl",function($scope){
+        $scope.name="张三";
+        $scope.age=8
+        $scope.fn=function(a){alert(a)}
+    })
+    myApp.directive("zfpxDir",function(){
+        return{
+            template:'<input type="text" ng-model="name1"/> <button ng-click="fn1({d:name1})">打招呼</button><input type="text" ng-model="age1"/>'  ,
+         scope:{
+             age1:'@age',
+               name1:'=name',
+                fn1:'&fn'
+           }
+
+        }
+    })
+
+
+</script>
+</body>
+</html>
